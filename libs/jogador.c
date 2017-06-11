@@ -9,6 +9,7 @@ Lista Joga(Grafo g, Lista grupo){
     Lista jogadas = constroiLista();
     //TODO: A Logica toda do jogo vai ficar aqui
     int counter = 1;
+    //enquanto a soma das posicoes do grupo atual for menor do que o total das posicoes do tabuleiro
     while(tamanhoLista(grupo) < tamanhoLista(g->vertices)) {
         // Pega os filhos do grupo
         Lista filhos = filhosGrupo(grupo);
@@ -18,12 +19,12 @@ Lista Joga(Grafo g, Lista grupo){
         //      - NETOS: Cores alcançáveis a partir dos filhos que NÃO são alcançáveis a partir da raiz
         //          Só é necessário para calcular o bônus de cada filho
         Lista coresFilhos = agrupaCores(filhos, g);
-        // printf("\tJOGADA %d\n", counter);
-        // printf("\tTamanho coresFilhos %d\n", tamanhoLista(coresFilhos));
-        // for(No n = primeiroNoLista(coresFilhos); n; n = getSucessorNo(n)) {
-        //     Vertice v = (Vertice) getConteudo(n);
-        //     printf("\t\tVértice - cor: %d, peso: %d, bonus: %d\n", v->cor, v->peso, v->bonus);
-        // }
+         printf("\tJOGADA %d\n", counter);
+         printf("\tTamanho coresFilhos %d\n", tamanhoLista(coresFilhos));
+         for(No n = primeiroNoLista(coresFilhos); n; n = getSucessorNo(n)) {
+             Vertice v = (Vertice) getConteudo(n);
+             printf("\t\tVértice - cor: %d, peso: %d, bonus: %d\n", v->cor, v->peso, v->bonus);
+         }
         // Seleciona o melhor filho baseado em peso(filho) + bônus(filho) // (filho com a maior soma de filho e peso)
         // O bônus é calculado da seguinte forma:
         //      - Soma o valor de cada neto (que não é alcançável pela raiz)
@@ -88,9 +89,10 @@ Lista filhosGrupo(Lista grupoPai) {
 
 Lista agrupaCores(Lista filhos, Grafo g) {
     Lista agrupa = constroiLista();
+    // Para cada nodo na lista de filhos
     for(No n = primeiroNoLista(filhos); n; n = getSucessorNo(n)) {
         Vertice v = (Vertice) getConteudo(n);
-        // Verifica se a cor já está na lista
+	// Verifica se a cor já está na lista
         bool estaNaLista = false;
         for(No m = primeiroNoLista(agrupa); m; m = getSucessorNo(m)) {
             Vertice w = (Vertice) getConteudo(m);
@@ -106,8 +108,9 @@ Lista agrupaCores(Lista filhos, Grafo g) {
             Vertice w = criaVertice();
             w->cor = v->cor;
             w->peso = v->peso;
+	    //Calcula bonus aqui esta somando o bonus dos filhos do filho v do grupo corrente 
             w->bonus = calculaBonus(v, filhos);
-            insereLista(w, agrupa);
+	    insereLista(w, agrupa);
         }
     }
 
@@ -131,13 +134,23 @@ Lista agrupaCores(Lista filhos, Grafo g) {
     return agrupa;
 }
 
+//TODO: eh aqui que irei alterar para somar o bonus dos netos
 int calculaBonus(Vertice v, Lista filhos) {
     int bonus = 0;
+    Lista netos = filhosGrupo(filhos)
     for(No n = primeiroNoLista(v->filhos); n; n = getSucessorNo(n)) {
         Vertice filho = getConteudo(n);
         // Se o filho não está na lista filhos e não está no grupo de vértices já consumidos
         if(!filho->grupo && !pertenceLista(filho, filhos)) {
-            bonus += filho->peso;
+	    // Calcula o peso dos netos (filhos deste filho) e soma no bonus
+	    int bonusNetos = 0;
+	    for(No neto = primeiroNoLista(filho->netos); neto; neto = getSucessor(neto)){
+		// Se o neto nao esta na lista de netos e nao esta no grupo de vertices ja consumidos
+		if(!neto->grupo && !pertenceLista(neto, netos)){
+			bonusNetos = += neto->peso;
+		}
+	    }
+            bonus = bonus + filho->peso + bonusNetos;
         }
     }
     return bonus;
