@@ -29,6 +29,7 @@ Where X Y Z W correspond to the numbers found below next to each test.
 
 Used as input to the professor's implementation were the sequences:
 
+------------------
 **Test 1- 4 4 3 2**
 
 Our code gave the sequence:
@@ -38,6 +39,7 @@ Our code gave the sequence:
 ```
 This was a correct answer and it was the minimum answer. It is easy to see it by checking.
 
+------------------
 **Test 2- 4 4 2 2**
 
 Our code gave the sequence:
@@ -47,6 +49,7 @@ Our code gave the sequence:
 ```
 This was a correct answer and it was the minimum answer. It is easy to see it by checking.
 
+------------------
 **Test 3- 5 5 4 2**
 
 Our code gave the sequence:
@@ -56,6 +59,10 @@ Our code gave the sequence:
 ```
 It is a correct sequence, and it is a minimum answer.
 
+Considering the grandchildren, our code gave a sequence of size:
+6
+
+--------------------
 **Test 4- 50 50 4 2**
 
 Our code gave the sequence:
@@ -65,20 +72,22 @@ Our code gave the sequence:
 ```
 It is a correct sequence.
 
+Considering the grandchildren, our code gave a sequence of size:
+53
 
+--------------------
 **Test 5- 50 50 6 2**
 
-First heuristic, our code gave the correct sequence:
+Our code gave the correct sequence:
 ```
 80
 2 1 3 4 2 6 5 2 1 3 5 4 1 3 2 4 5 2 5 4 2 3 5 1 2 6 4 1 6 3 2 5 4 6 1 2 6 4 2 5 6 2 4 1 2 3 6 4 1 3 5 2 6 3 1 2 3 5 4 2 1 5 6 4 1 5 3 5 4 1 6 2 3 4 5 1 2 6 3 4
 ```
-Second heuristic, our code gave the sequence:
-```
-88
-2 1 3 6 2 4 1 2 4 5 4 6 1 4 3 2 1 4 5 3 6 2 5 4 6 2 5 3 1 4 6 3 2 4 5 1 3 6 4 2 5 1 6 4 2 1 3 6 4 2 5 1 3 2 6 4 1 3 5 4 2 6 3 5 1 4 6 2 5 3 1 4 5 6 2 1 4 3 2 1 5 6 4 3 5 2 1 6
-```
 
+Considering the grandchildren, our code gave a sequence of size:
+81
+
+------------------
 **Test 6- 100 100 6 2**
 
 First heuristic: our code gave the sequence(not tested):
@@ -93,6 +102,10 @@ Second heuristic, our code gave the sequence:
 5 2 1 5 3 2 4 1 4 2 3 1 4 5 6 4 1 2 3 6 4 2 5 1 3 6 2 4 5 1 3 4 6 5 2 4 1 3 6 2 5 1 3 4 2 6 1 5 4 3 2 5 6 1 4 3 2 5 6 1 4 3 2 5 4 1 6 2 5 3 1 4 2 6 5 3 1 2 4 6 3 5 4 1 2 6 5 3 2 4 1 5 6 3 2 4 5 1 3 6 2 4 1 5 6 2 3 1 4 2 5 6 1 3 4 5 6 2 1 4 5 3 6 1 4 2 3 5 6 1 2 4 3 1 6 5 2 4 1 3 2 5 6 4 1 3 6 5 2 4 1 3 6 5 4 2 6 1 5 4 3 6 2 1 3 5 1 4 2 3 1 5 3 4 6 2 5 3 1 6 4 2 1 3 5 6
 ```
 
+Considering the grandchildren, our code gave a sequence of size:
+161
+
+----------------
 **Test 7- 5 5 4 3**
 
 Our code gave the sequence:
@@ -102,6 +115,10 @@ Our code gave the sequence:
 ```
 It is a correc sequence.
 
+Considering the grandchildren, our code gave a sequence of size:
+6
+
+---------------
 **Test 14x14-1**
 
 Our code gave the sequence:
@@ -114,3 +131,6 @@ It is a correct sequence, but the minimum sequence is:
 19
 4 1 4 5 2 1 5 1 2 4 6 2 3 6 3 2 4 5 1
 ```
+
+Considering the grandchildren, our code gave a sequence of size:
+21
