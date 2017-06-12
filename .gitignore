@@ -1,0 +1,10 @@
+f
+main
+*.o
+a.out
+*.in
+test
+tests/*.txt
+tests/*.png
+massif.out*
+*.out
